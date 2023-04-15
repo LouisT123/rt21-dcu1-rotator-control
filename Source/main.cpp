@@ -56,7 +56,7 @@ void COM1()
 void COM2()
 {
   cout << "Opening COM2 at 4800 baud" << endl;
-    cout << "Opening COM1 at 4800 baud" << endl;
+
   /*initPort(&hSerialRx, COMPORT2, nComRate, nComBits, timeout); //rx port
   Sleep(500);*/
   initPort(&hSerialTx, COMPORT2, nComRate, nComBits, timeout); //Tx port
@@ -77,25 +77,24 @@ void displayInfo()
   {
     //close
   }
-  else if(bearing < 0)
+  else if(bearing < 0 && bearing > 360.5)
   {
-    
+    error();
   }
-  else if(bearing)
+  else if(bearing > 359.5 && bearing < 360.5)
   {
-    
-  }
-  else if(bearing)
-  {
-    
+    bearing = 0;
   }
     
-  cout << "" << endl;
-  cout << "" << endl;
-  cout << "" << endl;
+  cout << "Destination Bearing: " << end;
+  cout << bearing << end;
+  cout << " degree" << endl;
+  
+  bearing = bearing + 1000;
+  
 }
 
 void error()
 {
-  
+  cout << "Enter Destination Bearing (0 - 359)" << endl;
 }
