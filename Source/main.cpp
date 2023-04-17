@@ -30,7 +30,7 @@ int main()
   cin >> COMPT;
 
   //calls comport serial here
-  if (COMPT < 1.5)
+  if (COMPT == 1)
   {
     COM1();
   }
@@ -38,7 +38,11 @@ int main()
   {
     COM2();
   }
-  displayInfo();
+  
+  for (;;)
+  {
+    displayInfo();
+  }
 }
 
 void COM1()
@@ -65,17 +69,18 @@ void COM2()
 }
 
 void displayInfo()
-{
+{  
   cout << "North = 0, East = 90, South = 180, West = 270" << endl;
   cout << "Enter 999 to exit program" << endl;
   cout << "Enter Destination Bearing (0 - 359)" << endl;
 
   //enter stuff
   int bearing = 0;
+  cin >> bearing;
 
   if (bearing == 999 || bearing > 999)
   {
-    //close
+    exit(0);
   }
   else if(bearing < 0 && bearing > 360.5)
   {
@@ -91,7 +96,23 @@ void displayInfo()
   cout << " degree" << endl;
   
   bearing = bearing + 1000;
+  //print #1, USING "AP####;"bearing
+
+
+  cout << "\n Press enter to execute rotation " << endl;
+  getchar();
+  rotating();
+}
+
+void rotating()
+{
+  cout << "\n Rotating " << endl;
+
+  //add the com port showing that the rotator is rotating
   
+  cout << "\n Wait for brake to engage before entering new destination" << endl;
+
+  //make sure brake is engage
 }
 
 void error()
