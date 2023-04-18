@@ -4,18 +4,18 @@ using namespace std;
 #include "RS232.h"
 
 const int BUFSIZE = 140;
-wchar_t COMPORT_Rx[] = L"COM7"; // COM port used for Rx (use L"COM6" for transmit program)
-wchar_t COMPORT_Tx[] = L"COM6";// COM port used for Tx (use L"COM6" for transmit program)
+//wchar_t COMPORT_Rx[] = L"COM7"; // COM port used for Rx (use L"COM6" for transmit program)
+//wchar_t COMPORT_Tx[] = L"COM6";// COM port used for Tx (use L"COM6" for transmit program)
 
-wchar_t COMPORT1[] = L"COM1";
-wchar_t COMPORT2[] = L"COM2";
+wchar_t COMPORT1_RX[] = L"COM1";
+wchar_t COMPORT1_TX[] = L"COM2";
 //com needs to have:
 //4800 baudrate
 //no parity
 //8 data bits
 //1 stop bit
 //ascii mode
-// "4800,N,8,1,ASC". in old ass basic
+// "4800,N,8,1,ASC". in old basic
 HANDLE hSerialRx;
 HANDLE hSerialTx;
 int nComRate = 4800;
@@ -48,10 +48,10 @@ int main()
 void COM1()
 {
   cout << "Opening COM1 at 4800 baud" << endl;
-  initPort(&hSerialRx, COMPORT1, nComRate, nComBits, timeout); //rx port
+  initPort(&hSerialRx, COMPORT1Rx, nComRate, nComBits, timeout); //rx port
   Sleep(500);
 
-  initPort(&hSerialTx, COMPORT1, nComRate, nComBits, timeout); //Tx port
+  initPort(&hSerialTx, COMPORT1Tx, nComRate, nComBits, timeout); //Tx port
   Sleep(500);
 
   cout << "Checking heading for the rotator" << endl;
